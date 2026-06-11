@@ -2,14 +2,14 @@ import React from "react";
 import Link from "next/link";
 const Header = () => {
   return (
-    <header className="flex justify-between sticky top-0  items-center h-auto px-10  bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100">
+    <header className="flex justify-between  top-0  items-center h-auto px-10  border-b-2 border-pink-100 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50">
       <div className="h-20 w-52 flex items-center">
-        <Link href="/home">
+        <Link href="/">
           <img src="/images/shoplogo.png" />
         </Link>
       </div>
       <nav className="flex gap-8 ">
-        <Link href="/home">Home</Link>
+        <Link href="/">Home</Link>
         <Link href="/about">About</Link>
         <Link href="/products">Products</Link>
         <Link href="/order">Order</Link>
@@ -45,7 +45,7 @@ const Header = () => {
             </div>
           </Link>
           <Link href="/Login">
-            <button className="bg-pink-500 text-white font-bold px-4 py-1 rounded-2xl">
+            <button className="bg-pink-500 text-white font-bold px-4 py-1 rounded-2xl ">
               Login
             </button>
           </Link>

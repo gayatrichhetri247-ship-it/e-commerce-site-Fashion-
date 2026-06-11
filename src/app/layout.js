@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { Roboto, Playfair_Display } from "next/font/google";
 import ProductCard from "@/components/ProductCrad";
+import FooterSection from "@/components/FooterSection";
 
 // const roboto = Roboto({
 //   subsets: ["latin"],
@@ -20,8 +21,9 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       <body className={playfair.className}>
         <Header />
-        {/* <ProductCard/> */}
+        
         {children}
+        <FooterSection/>
       </body>
     </html>
   );
