@@ -2,16 +2,16 @@ import React from 'react'
 import Link from "next/link";
 const page = () => {
   return (
-    <div className='flex justify-center p-14'>
-    <div className='flex flex-col items-center border border-pink-200 bg-pink-200 w-[400px] h-fit p-6 rounded-2xl'>
+    <div className='flex justify-center p-14 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100 '>
+    <div className='flex flex-col items-center border border-pink-200 bg-pink-100 w-[400px] h-fit p-6 rounded-2xl shadow-2xl shadow-pink-300'>
       <div className='flex flex-col items-center gap-1'>
         <div className='text-4xl'>🎀</div>
         <div className='text-3xl font-bold'>Welcome back</div>
         <div className='text-sm text-gray-700 '>Log in to track orders & save your faves.</div>
       </div>
       <div className='w-full bg-pink-300 flex gap-4 rounded-2xl mt-4 '>
-        <button className='w-1/2 py-1 px-2 border border-pink-300 rounded-2xl bg-pink-500 text-white text-sm font-bold '>Login</button>
-        <button className='w-1/2 py-1 px-2 border border-pink-300 rounded-2xl bg-pink-500 text-white text-sm font-bold '>Sign up</button>
+       <Link href="client/login" className='block w-full'><button className='w-1/2 py-1 px-2 border border-pink-300 rounded-2xl bg-pink-500 text-white text-sm font-bold '>Login</button></Link> 
+       <Link href="/client/register" className='block w-full'><button className='w-1/2 py-1 px-2 border border-pink-300 rounded-2xl bg-pink-500 text-white text-sm font-bold '>Sign up</button></Link> 
       </div>
       <form className='mt-4 w-full flex flex-col gap-4'>
         <div className='flex flex-col gap-2 w-full'>
