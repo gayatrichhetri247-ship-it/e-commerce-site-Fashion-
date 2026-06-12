@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 const page = () => {
   return (
     <div className="p-14 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 h-auto flex flex-col items-center gap-4">
@@ -79,15 +79,15 @@ const page = () => {
             </button>
           </form>
         </div>
-        <div className="w-1/2 flex flex-col gap-6 bg-white py-6 px-8 rounded-2xl">
+        <div className="w-1/2 flex flex-col gap-6 bg-white py-6 px-8 rounded-2xl shadow-lg shadow-pink-200">
           <div className="flex justify-between">
             <div className="flex ">
               <p className="font-bold text-xl">Current products</p>{" "}
               <p className="ml-1 text-xl text-pink-600 font-bold"> (16)</p>
             </div>
-            <button className="py-2 px-4 border border-pink-200 rounded-3xl text-sm font-bold">
+            <Link href="/admin/adminlogin"><button className="py-2 px-4 border border-pink-200 rounded-3xl text-sm font-bold cursor-pointer">
               Sign Out
-            </button>
+            </button> </Link>
           </div>
 
           {/* products */}

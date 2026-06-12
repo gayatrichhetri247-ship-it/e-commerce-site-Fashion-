@@ -17,7 +17,7 @@ const page = () => {
             placeholder="password"
             className=" p-2 border-2 border-t-black border-b-gray-500 border-l-black border-r-gray-500 rounded-2xl text-sm"
           />
-         <Link href="/admin-dashboard"><button className="bg-pink-600 p-2 text-white font-bold rounded-2xl w-full mt-4">
+         <Link href="/admin-dashboard"><button className="bg-pink-600 p-2 text-white font-bold rounded-2xl w-full mt-4 cursor-pointer">
             Login
           </button> </Link> 
         </form>

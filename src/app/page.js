@@ -22,7 +22,7 @@ const page = () => {
         </div>
         <div className="flex gap-6 mt-6">
           <Link href="/products"><div className="w-60 text-center cursor-pointer py-4 text-lg bg-pink-600 text-white rounded-3xl font-bold">Shop Now</div></Link>
-          <div className="w-60 text-center cursor-pointer py-4 text-lg bg-white text-pink-600 border border-pink-600 rounded-3xl font-bold">Explore Dresses</div>
+          <Link href="/products"><div className="w-60 text-center cursor-pointer py-4 text-lg bg-white text-pink-600 border border-pink-600 rounded-3xl font-bold">Explore Dresses</div></Link>
         </div>
       </div>
       <div className="bottom-18">

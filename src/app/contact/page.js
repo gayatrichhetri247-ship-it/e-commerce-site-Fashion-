@@ -24,7 +24,7 @@ const Page = () => {
             <div className="text-3xl">📧</div>
             <div className="text-sm">
               <p className="text-pink-600 font-bold">Email</p>
-              <p className="text-gray-700 text-xs">hello@blushandbloom.com</p>
+              <p className="text-gray-700 text-xs">girlishfashion@gmail.com</p>
             </div>
           </div>
 
