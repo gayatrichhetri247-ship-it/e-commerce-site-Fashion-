@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link"
 const FooterSection = () => {
   return (
     <div className="bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100 px-12 pt-14">
@@ -26,7 +26,7 @@ const FooterSection = () => {
           <div>Size Guide</div>
           <div>Track My Order</div>
           <div>Contact Us</div>
-          <div>🛠️ Owner Dashboard</div>
+          <Link href="/admin/adminlogin"><div>🛠️ Owner Dashboard</div></Link>
         </div>
         <div className="flex gap-2 flex-col text-gray-700 text-sm">
           <div className="uppercase font-extrabold text-md tracking-wider text-black">Join the Club ♡</div>

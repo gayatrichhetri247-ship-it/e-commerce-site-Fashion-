@@ -6,7 +6,7 @@ const Page = () => {
       <div className="flex flex-col gap-2 text-center">
         <div className="text-4xl">💌</div>
         <div className="text-4xl font-extrabold">Say hello</div>
-        <div className="text-sm text-gray-700">We'd love to hear from you, darling ♡</div>
+        <div className="text-sm text-gray-700">We would love to hear from you, darling ♡</div>
       </div>
 
       <div className="flex justify-between w-full p-16">

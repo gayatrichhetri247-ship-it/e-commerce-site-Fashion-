@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 const page = () => {
   return (
     <div className="flex justify-between items-center h-screen px-14 py-10  gap-28 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100">
@@ -21,7 +21,7 @@ const page = () => {
           pretty. Dress like the main character, darling. ♡
         </div>
         <div className="flex gap-6 mt-6">
-          <div className="w-60 text-center cursor-pointer py-4 text-lg bg-pink-600 text-white rounded-3xl font-bold">Shop Now</div>
+          <Link href="/products"><div className="w-60 text-center cursor-pointer py-4 text-lg bg-pink-600 text-white rounded-3xl font-bold">Shop Now</div></Link>
           <div className="w-60 text-center cursor-pointer py-4 text-lg bg-white text-pink-600 border border-pink-600 rounded-3xl font-bold">Explore Dresses</div>
         </div>
       </div>
