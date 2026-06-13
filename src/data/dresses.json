@@ -1,0 +1,92 @@
+[
+    {
+        "id":"1",
+        "category":"dresses",
+        "image":"/images/products/dresses/blue1.jpg",
+        "title":"Blue Ruffle Short Dress",
+        "price":"1,600",
+        "originalprice":"2,000",
+        "rating":"4.0",
+        "review":"56"
+    },
+     {
+        "id":"2",
+        "category":"dresses",
+        "image":"/images/products/dresses/check1.jpg",
+        "title":"Beautiful check dress",
+        "price":"1,700",
+        "originalprice":"2,300",
+        "rating":"4.3",
+        "review":"67"
+    },
+     {
+        "id":"3",
+        "category":"dresses",
+        "image":"/images/products/dresses/denimfrock.jpg",
+        "title":"Denim Jeans Dress",
+        "price":"1,200",
+        "originalprice":"1,400",
+        "rating":"4.6",
+        "review":"106"
+    },
+     {
+        "id":"4",
+        "category":"dresses",
+        "image":"/images/products/dresses/floral-dress.jpg",
+        "title":"Blue Floral Dress With Cami",
+        "price":"1,600",
+        "originalprice":"1,900",
+        "rating":"4.2",
+        "review":"39"
+    },
+     {
+        "id":"5",
+        "category":"dresses",
+        "image":"/images/products/dresses/floraldress2.jpg",
+        "title":"Pink Floral Dress",
+        "price":"1,400",
+        "originalprice":"1,600",
+        "rating":"4.3",
+        "review":"50"
+    },
+     {
+        "id":"6",
+        "category":"dresses",
+        "image":"/images/products/dresses/orange.jpg",
+        "title":"Orange Ruffle Dress",
+        "price":"1,600",
+        "originalprice":"2,000",
+        "rating":"4.3",
+        "review":"56"
+    },
+     {
+        "id":"7",
+        "category":"dresses",
+        "image":"/images/products/dresses/polkadotdress.jpg",
+        "title":"Polka Dot Dress",
+        "price":"1,200",
+        "originalprice":"1,500",
+        "rating":"4.1",
+        "review":"23"
+    },
+     {
+        "id":"8",
+        "category":"dresses",
+        "image":"/images/products/dresses/spring-dress.jpg",
+        "title":"Summer Green Floral Dress",
+        "price":"1,800",
+        "originalprice":"2,500",
+        "rating":"4.6",
+        "review":"43"
+    },
+     {
+        "id":"9",
+        "category":"dresses",
+        "image":"/images/products/dresses/white1.jpg",
+        "title":"Halter Neck Short Dress",
+        "price":"1,200",
+        "originalprice":"1,500",
+        "rating":"4.2",
+        "review":"18"
+    }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "12",
+    "category": "tops",
+    "image": "/images/products/tops/bowtop.jpg",
+    "title": "White Bow Top",
+    "price": "900",
+    "originalprice": "1,200",
+    "rating": "4.0",
+    "review": "56"
+  },
+  {
+    "id": "13",
+    "category": "tops",
+    "image": "/images/products/tops/casualtshirt.jpg",
+    "title": "Beautiful Crop T-shirt",
+    "price": "900",
+    "originalprice": "1,200",
+    "rating": "4.2",
+    "review": "65"
+  },
+  {
+    "id": "14",
+    "category": "tops",
+    "image": "/images/products/tops/cowlneck.jpg",
+    "title": "Pink Cowl Neck Top",
+    "price": "800",
+    "originalprice": "1,000",
+    "rating": "4.5",
+    "review": "70"
+  },
+  {
+    "id": "15",
+    "category": "tops",
+    "image": "/images/products/tops/fencytop.jpg",
+    "title": "Fancy Net T-shirt",
+    "price": "1000",
+    "originalprice": "1,400",
+    "rating": "4.5",
+    "review": "80"
+  },
+  {
+    "id": "16",
+    "category": "tops",
+    "image": "/images/products/tops/floraltiefronttop.jpg",
+    "title": "Pink Floral Tie Front T-shirt",
+    "price": "1200",
+    "originalprice": "1,600",
+    "rating": "4.2",
+    "review": "90"
+  },
+  {
+    "id": "17",
+    "category": "tops",
+    "image": "/images/products/tops/haltertop.jpg",
+    "title": "Check Halter Tops",
+    "price": "800",
+    "originalprice": "1,000",
+    "rating": "4.4",
+    "review": "67"
+  },
+  {
+    "id": "18",
+    "category": "tops",
+    "image": "/images/products/tops/normallenghthcami.jpg",
+    "title": "Normal Length Cami Top",
+    "price": "600",
+    "originalprice": "800",
+    "rating": "4.7",
+    "review": "100"
+  },
+  {
+    "id": "19",
+    "category": "tops",
+    "image": "/images/products/tops/peplumtop.jpg",
+    "title": "Beautiful Peplum T-shirt",
+    "price": "1,000",
+    "originalprice": "1,300",
+    "rating": "4.3",
+    "review": "78"
+  },
+  {
+    "id": "20",
+    "category": "tops",
+    "image": "/images/products/tops/sideknottop.jpg",
+    "title": "Side Knot T-shirt",
+    "price": "1,100",
+    "originalprice": "1,500",
+    "rating": "4.6",
+    "review": "90"
+  },
+   {
+    "id": "21",
+    "category": "tops",
+    "image": "/images/products/tops/summertop.jpg",
+    "title": "Cute Summer Tops",
+    "price": "900",
+    "originalprice": "1,100",
+    "rating": "4.6",
+    "review": "100"
+  },
+   {
+    "id": "22",
+    "category": "tops",
+    "image": "/images/products/tops/upshoulder.jpg",
+    "title": "Upshoulder T-shirt",
+    "price": "1,100",
+    "originalprice": "1,500",
+    "rating": "4.3",
+    "review": "60"
+  }
+]

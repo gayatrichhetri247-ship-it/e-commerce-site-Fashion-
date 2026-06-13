@@ -1,3 +1,5 @@
+import Productcards from "@/components/productcards";
+import ShopAll from "@/components/ProductCategory";
 import ProductCard from "@/components/ProductCrad";
 import Link from "next/link";
 import React from "react";
@@ -23,37 +25,13 @@ const page = () => {
         </div>
       </div>
 
-      <div className="flex mt-8 justify-between w-full px-4">
-        <div className="flex gap-6 items-center text-sm"> 
-            <Link href="/shopall" className="px-6 py-1 bg-white border border-pink-300 text-center rounded-2xl">All</Link>
-            <Link href="/shopall/dresses" className="px-6 py-1 bg-white border border-pink-300 text-center rounded-2xl">Dresses</Link>
-            <Link href="/shopall/tops" className="px-6 py-1 bg-white border border-pink-300 text-center rounded-2xl">Tops</Link>
-            <Link href="/shopall/pants" className="px-6 py-1 bg-white border border-pink-300 text-center rounded-2xl">Pants</Link>
-            <Link href="/shopall/skirts" className="px-6 py-1 bg-white border border-pink-300 text-center rounded-2xl">Skirts</Link>
-            <Link href="/shopall/accessories" className="px-6 py-1 bg-white border border-pink-300 text-center rounded-2xl">Accessories</Link>
-        </div>
-        <div className="flex gap-4 text-sm"> 
-            <input type="text" placeholder="Search products..." className="border border-pink-200 px-4 py-2 rounded-2xl bg-white text-black" />
-            <select className="border border-pink-200 px-4 py-2 rounded-2xl bg-white text-black">
-                <option className="border border-pink-200 px-4 py-2 rounded-2xl bg-white text-black" >Feature</option>
-                <option className="border border-pink-200 px-4 py-2 rounded-2xl bg-white text-black" >Price: Low to High</option>
-                <option className="border border-pink-200 px-4 py-2 rounded-2xl bg-white text-black" >Price: High to Low</option>
-                <option className="border border-pink-200 px-4 py-2 rounded-2xl bg-white text-black" >Customer Rating</option>
-            </select>
-        </div>
+      <div className="flex mt-8 justify-between  px-4">
+        <ShopAll/>
+        
+    
       </div>
-      <div className="mt-10 grid grid-cols-4 gap-10">
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
+      <div className="mt-10">
+        <Productcards/>
       </div>
     </div>
   );
