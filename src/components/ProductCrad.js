@@ -1,35 +1,53 @@
 import React from "react";
-import Link from "next/link";
+import Image from "next/image";
+import { Star } from "lucide-react";
 
 const ProductCard = () => {
   return (
-    <div className="p-10 relative">
-      <div>
-        <img
+    <div className="w-72 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg shadow-pink-200">
+      {/* Product Image */}
+      <div className="relative h-80 w-full">
+        <Image
           src="/images/products/dress.jpg"
-          alt="Dress"
-          className="h-66 w-auto rounded-2xl"
+          alt="Polka Dots Dress"
+          fill
+          className="object-cover"
         />
       </div>
-      <div className="absolute bottom-12 left-14 text-white ">
-        <h1 className="text-lg font-bold">Dresses</h1>
-        <Link href="/products/dress">
-          <div className="flex items-center gap-0 ">
-            <p className="text-xs ">Shop Now</p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="size-6 mt-1"
-          >
-            <path
-              fillRule="evenodd"
-              d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z"
-              clipRule="evenodd"
-            />
-          </svg></div>
-          
-        </Link>
+
+      {/* Product Details */}
+      <div className="p-4">
+        <p className="text-xs font-medium text-pink-600">DRESSES</p>
+
+        <h3 className="mt-1 text-lg font-bold">
+          Polka Dots Dress
+        </h3>
+
+        {/* Rating */}
+        <div className="mt-2 flex items-center gap-1">
+          <Star
+            size={14}
+            fill="#fcea5b"
+            color="#fcea5b"
+          />
+          <span className="text-sm font-semibold">4.9</span>
+          <span className="text-sm text-gray-500">(163)</span>
+        </div>
+
+        {/* Price */}
+        <div className="mt-3 flex items-center gap-2">
+          <span className="text-lg font-bold text-black">
+            Rs. 1600
+          </span>
+          <span className="text-sm text-gray-500 line-through">
+            Rs. 2100
+          </span>
+        </div>
+
+        {/* Add to Cart Button */}
+        <button className="mt-4 w-full rounded-lg bg-pink-600 py-2 text-white font-bold transition hover:opacity-80">
+          Add to Cart
+        </button>
       </div>
     </div>
   );

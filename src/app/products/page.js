@@ -1,9 +1,10 @@
+import ProductCard from "@/components/ProductCrad";
 import Link from "next/link";
 import React from "react";
 
 const page = () => {
   return (
-    <div className=" h-screen bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 flex flex-col items-center p-8">
+    <div className=" h-auto bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 flex flex-col items-center p-8">
       <div>
         <div>
           <svg
@@ -40,6 +41,19 @@ const page = () => {
                 <option className="border border-pink-200 px-4 py-2 rounded-2xl bg-white text-black" >Customer Rating</option>
             </select>
         </div>
+      </div>
+      <div className="mt-10 grid grid-cols-4 gap-10">
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
       </div>
     </div>
   );
