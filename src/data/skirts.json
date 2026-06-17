@@ -7,7 +7,8 @@
     "price": "1,300",
     "originalprice": "1,500",
     "rating": "4.5",
-    "review": "53"
+    "review": "53",
+     "featured": true
   },
   {
     "id": "33",
@@ -17,7 +18,8 @@
     "price": "900",
     "originalprice": "1,200",
     "rating": "4.2",
-    "review": "65"
+    "review": "65",
+     "featured": true
   },
   {
     "id": "34",
@@ -27,7 +29,8 @@
     "price": "1,000",
     "originalprice": "1,300",
     "rating": "4.5",
-    "review": "54"
+    "review": "54",
+     "featured": true
   },
   {
     "id": "35",
@@ -37,7 +40,8 @@
     "price": "1,100",
     "originalprice": "1,300",
     "rating": "4.5",
-    "review": "80"
+    "review": "80",
+     "featured": true
   },
   {
     "id": "36",
@@ -47,7 +51,8 @@
     "price": "1,200",
     "originalprice": "1,600",
     "rating": "4.6",
-    "review": "95"
+    "review": "95",
+     "featured": true
   },
   {
     "id": "37",
@@ -57,7 +62,8 @@
     "price": "1,000",
     "originalprice": "1,400",
     "rating": "4.2",
-    "review": "56"
+    "review": "56",
+     "featured": true
   },
   {
     "id": "38",
@@ -67,7 +73,8 @@
     "price": "1,200",
     "originalprice": "1,500",
     "rating": "4.7",
-    "review": "43"
+    "review": "43",
+     "featured": true
   },
   {
     "id": "39",
@@ -77,6 +84,7 @@
     "price": "1,300",
     "originalprice": "1,700",
     "rating": "4.3",
-    "review": "78"
+    "review": "78",
+     "featured": true
   }
 ]

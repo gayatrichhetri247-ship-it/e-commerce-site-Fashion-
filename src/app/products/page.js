@@ -30,9 +30,7 @@ const page = () => {
         
     
       </div>
-      <div className="mt-10">
-        <Productcards/>
-      </div>
+      
     </div>
   );
 };

@@ -7,7 +7,8 @@
     "price": "700",
     "originalprice": "1,000",
     "rating": "4.5",
-    "review": "53"
+    "review": "53",
+     "featured": true
   },
   {
     "id": "41",
@@ -17,7 +18,8 @@
     "price": "150",
     "originalprice": "300",
     "rating": "4.2",
-    "review": "65"
+    "review": "65",
+     "featured": true
   },
   {
     "id": "42",
@@ -27,7 +29,8 @@
     "price": "500",
     "originalprice": "700",
     "rating": "4.5",
-    "review": "54"
+    "review": "54",
+     "featured": true
   },
   {
     "id": "43",
@@ -37,7 +40,8 @@
     "price": "1,200",
     "originalprice": "1,600",
     "rating": "4.5",
-    "review": "80"
+    "review": "80",
+     "featured": true
   },
   {
     "id": "44",
@@ -47,7 +51,8 @@
     "price": "1,000",
     "originalprice": "1,400",
     "rating": "4.6",
-    "review": "95"
+    "review": "95",
+     "featured": true
   },
   {
     "id": "45",
@@ -57,7 +62,8 @@
     "price": "700",
     "originalprice": "1,000",
     "rating": "4.2",
-    "review": "56"
+    "review": "56",
+     "featured": true
   },
   {
     "id": "46",
@@ -67,7 +73,8 @@
     "price": "200",
     "originalprice": "300",
     "rating": "4.7",
-    "review": "43"
+    "review": "43",
+     "featured": true
   },
   {
     "id": "47",
@@ -77,7 +84,8 @@
     "price": "800",
     "originalprice": "1,200",
     "rating": "4.3",
-    "review": "78"
+    "review": "78",
+     "featured": true
   },
     {
     "id": "48",
@@ -87,7 +95,8 @@
     "price": "150",
     "originalprice": "250",
     "rating": "4.3",
-    "review": "78"
+    "review": "78",
+     "featured": true
   },
     {
     "id": "49",
@@ -97,7 +106,8 @@
     "price": "800",
     "originalprice": "1,200",
     "rating": "4.1",
-    "review": "86"
+    "review": "86",
+     "featured": true
   },
     {
     "id": "50",
@@ -107,7 +117,8 @@
     "price": "600",
     "originalprice": "1,000",
     "rating": "4.6",
-    "review": "45"
+    "review": "45",
+     "featured": true
   },
     {
     "id": "51",
@@ -117,7 +128,8 @@
     "price": "700",
     "originalprice": "1,000",
     "rating": "4.2",
-    "review": "79"
+    "review": "79",
+     "featured": true
   },
    {
     "id": "52",
@@ -127,7 +139,8 @@
     "price": "500",
     "originalprice": "700",
     "rating": "4.6",
-    "review": "46"
+    "review": "46",
+     "featured": true
   },
    {
     "id": "53",
@@ -137,6 +150,7 @@
     "price": "500",
     "originalprice": "800",
     "rating": "4.1",
-    "review": "70"
+    "review": "70",
+     "featured": true
   }
 ]
