@@ -13,7 +13,7 @@ const LoginSignUpButton = () => {
         className={`w-1/2 px-2 py-1 text-center rounded-3xl border font-bold ${
           pathname === "/client/login"
             ? "bg-pink-500 text-white border-none"
-            : "bg-pink-300 text-pink-800 border-pink-600"
+            : "bg-pink-200 text-pink-800 border-pink-600"
         }`}
       >
         Login
@@ -24,7 +24,7 @@ const LoginSignUpButton = () => {
         className={`w-1/2 px-2 py-1 text-center rounded-3xl border font-bold ${
           pathname === "/client/register"
             ? "bg-pink-500 text-white border-none"
-            : "bg-pink-300 text-pink-800 border-pink-600"
+            : "bg-pink-200 text-pink-800 border-pink-600"
         }`}
       >
         Sign Up

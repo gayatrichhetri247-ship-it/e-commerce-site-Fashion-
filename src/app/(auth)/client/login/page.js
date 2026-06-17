@@ -1,47 +1,87 @@
+"use client";
 
-import React from "react";
-import Link from "next/link";
+import React, { useState } from "react";
 import LoginSignUpButton from "@/components/LoginSignUpButton";
-const Page = () => {
 
+const Page = () => {
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (
+      savedUser &&
+      savedUser.email === loginData.email &&
+      savedUser.password === loginData.password
+    ) {
+      alert("Login Successful!");
+      window.location.href = "/";
+    } else {
+      alert("Invalid Email or Password");
+    }
+  };
 
   return (
-    <div className="flex justify-center p-14 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-100 ">
+    <div className="flex justify-center p-14 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-100">
       <div className="flex flex-col items-center border border-pink-200 bg-pink-100 w-100 h-fit p-6 rounded-2xl shadow-2xl shadow-pink-300">
         <div className="flex flex-col items-center gap-1">
           <div className="text-4xl">🎀</div>
-          <div className="text-3xl font-bold">Welcome back</div>
-          <div className="text-sm text-gray-700 ">
+          <div className="text-3xl font-bold">Welcome Back</div>
+          <div className="text-sm text-gray-700">
             Log in to track orders & save your faves.
           </div>
         </div>
-        <LoginSignUpButton/>
-       
-        <form className="mt-4 w-full flex flex-col gap-4">
-          <div className="flex flex-col gap-2 w-full">
+
+        <LoginSignUpButton />
+
+        <form
+          onSubmit={handleLogin}
+          className="mt-4 w-full flex flex-col gap-4"
+        >
+          <div className="flex flex-col gap-2">
             <label className="font-bold">Email</label>
             <input
               type="email"
+              name="email"
+              value={loginData.email}
+              onChange={handleChange}
               placeholder="daisy@gmail.com"
-              className="py-2 px-4 border-2 rounded-2xl border-t-black border-l-black border-b-gray-500 border-r-gray-500 bg-white"
+              className="py-2 px-4 border-2 rounded-2xl bg-white"
+              required
             />
           </div>
 
-          <div className="flex flex-col gap-2 w-full ">
+          <div className="flex flex-col gap-2">
             <label className="font-bold">Password</label>
             <input
               type="password"
-              placeholder=""
-              className="py-2 px-4 border-2 rounded-2xl border-t-black border-l-black border-b-gray-500 border-r-gray-500 bg-white"
+              name="password"
+              value={loginData.password}
+              onChange={handleChange}
+              className="py-2 px-4 border-2 rounded-2xl bg-white"
+              required
             />
           </div>
-        </form>
 
-        <Link href="/" className="block w-full">
-          <button className=" p-2 w-full mt-4 bg-pink-600 rounded-2xl text-white font-bold">
+          <button
+            type="submit"
+            className="p-2 w-full bg-pink-600 rounded-2xl text-white font-bold"
+          >
             Login ♡
           </button>
-        </Link>
+        </form>
       </div>
     </div>
   );

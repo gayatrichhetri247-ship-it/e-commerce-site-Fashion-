@@ -2,5 +2,5 @@ import ShopAll from "@/components/ProductCategory";
 
 
 export default function Page() {
-  return <ShopAll />;
+  return <div><ShopAll /></div> ;
 }

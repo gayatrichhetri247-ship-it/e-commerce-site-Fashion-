@@ -7,6 +7,9 @@ import { useState } from "react";
 
 import dresses from "../data/dresses.json";
 import tops from "../data/tops.json";
+import pants from "../data/pants.json"
+import skirts from "../data/skirts.json"
+import accessories from "../data/accessories.json"
 
 const ShopAll = () => {
   const pathname = usePathname();
@@ -15,13 +18,14 @@ const ShopAll = () => {
   const [sort, setSort] = useState("feature");
 
   // Combine all products
-  const allProducts = [...dresses, ...tops];
+  const allProducts = [...dresses, ...tops, ...pants, ...skirts, ...accessories];
 
   // Get category from URL
   const category = pathname.split("/")[2];
 
   // Category Filter
   let filteredProducts = allProducts;
+
 
   if (category) {
     filteredProducts = allProducts.filter(
@@ -59,7 +63,7 @@ const ShopAll = () => {
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 h-auto w-full">
 
       {/* TOP BAR */}
       <div className="flex justify-between items-center flex-wrap gap-4">

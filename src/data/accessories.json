@@ -1,0 +1,142 @@
+[
+  {
+    "id": "40",
+    "category": "accessories",
+    "image": "/images/products/accessories/armcuff.jpg",
+    "title": "Purple Flower Arm Cuff",
+    "price": "700",
+    "originalprice": "1,000",
+    "rating": "4.5",
+    "review": "53"
+  },
+  {
+    "id": "41",
+    "category": "accessories",
+    "image": "/images/products/accessories/bowearring.jpg",
+    "title": "Korean Bow Earring",
+    "price": "150",
+    "originalprice": "300",
+    "rating": "4.2",
+    "review": "65"
+  },
+  {
+    "id": "42",
+    "category": "accessories",
+    "image": "/images/products/accessories/braclet.jpg",
+    "title": "Beautiful Flower Bracelet",
+    "price": "500",
+    "originalprice": "700",
+    "rating": "4.5",
+    "review": "54"
+  },
+  {
+    "id": "43",
+    "category": "accessories",
+    "image": "/images/products/accessories/butterflyarm.jpg",
+    "title": "Butterfly Arm Cuff",
+    "price": "1,200",
+    "originalprice": "1,600",
+    "rating": "4.5",
+    "review": "80"
+  },
+  {
+    "id": "44",
+    "category": "accessories",
+    "image": "/images/products/accessories/butterflybracelet.jpg",
+    "title": "Bracelet Combo",
+    "price": "1,000",
+    "originalprice": "1,400",
+    "rating": "4.6",
+    "review": "95"
+  },
+  {
+    "id": "45",
+    "category": "accessories",
+    "image": "/images/products/accessories/earring.jpg",
+    "title": "Korean Earrings",
+    "price": "700",
+    "originalprice": "1,000",
+    "rating": "4.2",
+    "review": "56"
+  },
+  {
+    "id": "46",
+    "category": "accessories",
+    "image": "/images/products/accessories/goldbow.jpg",
+    "title": "Gold Bow Earring",
+    "price": "200",
+    "originalprice": "300",
+    "rating": "4.7",
+    "review": "43"
+  },
+  {
+    "id": "47",
+    "category": "accessories",
+    "image": "/images/products/accessories/goldearring.jpg",
+    "title": "Gold Earrings Set",
+    "price": "800",
+    "originalprice": "1,200",
+    "rating": "4.3",
+    "review": "78"
+  },
+    {
+    "id": "48",
+    "category": "accessories",
+    "image": "/images/products/accessories/koreanearring.jpg",
+    "title": "Korean Earring",
+    "price": "150",
+    "originalprice": "250",
+    "rating": "4.3",
+    "review": "78"
+  },
+    {
+    "id": "49",
+    "category": "accessories",
+    "image": "/images/products/accessories/layerbecklace.jpg",
+    "title": "Layer Necklace",
+    "price": "800",
+    "originalprice": "1,200",
+    "rating": "4.1",
+    "review": "86"
+  },
+    {
+    "id": "50",
+    "category": "accessories",
+    "image": "/images/products/accessories/layerbutterfly.jpg",
+    "title": "Butterfly Layer Necklace",
+    "price": "600",
+    "originalprice": "1,000",
+    "rating": "4.6",
+    "review": "45"
+  },
+    {
+    "id": "51",
+    "category": "accessories",
+    "image": "/images/products/accessories/pinkcrystalflowernecklace.jpg",
+    "title": "Pink Crystal Flower Necklace",
+    "price": "700",
+    "originalprice": "1,000",
+    "rating": "4.2",
+    "review": "79"
+  },
+   {
+    "id": "52",
+    "category": "accessories",
+    "image": "/images/products/accessories/redheartnecklace.jpg",
+    "title": "Red Heart Necklace",
+    "price": "500",
+    "originalprice": "700",
+    "rating": "4.6",
+    "review": "46"
+  },
+   {
+    "id": "53",
+    "category": "accessories",
+    "image": "/images/products/accessories/silverbutterflynecklace.jpg",
+    "title": "Silver Butterfly Necklace",
+    "price": "500",
+    "originalprice": "800",
+    "rating": "4.1",
+    "review": "70"
+  }
+]

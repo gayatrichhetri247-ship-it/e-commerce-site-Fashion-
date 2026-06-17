@@ -1,0 +1,92 @@
+[
+  {
+    "id": "23",
+    "category": "pants",
+    "image": "/images/products/pants/baggyjeans.jpg",
+    "title": "Washed Blue Baggy Jeans",
+    "price": "1,500",
+    "originalprice": "2,000",
+    "rating": "4.8",
+    "review": "50"
+  },
+  {
+    "id": "24",
+    "category": "pants",
+    "image": "/images/products/pants/bellypant.jpg",
+    "title": "Belly Pant",
+    "price": "1,300",
+    "originalprice": "1,600",
+    "rating": "4.4",
+    "review": "65"
+  },
+  {
+    "id": "25",
+    "category": "pants",
+    "image": "/images/products/pants/bowjeans.jpg",
+    "title": "Bow Jeans",
+    "price": "1,200",
+    "originalprice": "1,500",
+    "rating": "4.5",
+    "review": "70"
+  },
+  {
+    "id": "26",
+    "category": "pants",
+    "image": "/images/products/pants/boxpant.jpg",
+    "title": "Box Pant",
+    "price": "1,100",
+    "originalprice": "1,300",
+    "rating": "4.5",
+    "review": "80"
+  },
+  {
+    "id": "27",
+    "category": "pants",
+    "image": "/images/products/pants/highwaistkoreanpant.jpg",
+    "title": "High Waist Korean Formal Pant",
+    "price": "1,400",
+    "originalprice": "1,700",
+    "rating": "4.3",
+    "review": "99"
+  },
+  {
+    "id": "28",
+    "category": "pants",
+    "image": "/images/products/pants/linen.jpg",
+    "title": "Comfy Linen Pant",
+    "price": "1,000",
+    "originalprice": "1,400",
+    "rating": "4.2",
+    "review": "56"
+  },
+  {
+    "id": "29",
+    "category": "pants",
+    "image": "/images/products/pants/summertrouser.jpg",
+    "title": "Summar Trouser",
+    "price": "800",
+    "originalprice": "1,200",
+    "rating": "4.7",
+    "review": "43"
+  },
+  {
+    "id": "30",
+    "category": "pants",
+    "image": "/images/products/pants/widelegjeans.jpg",
+    "title": "Wide Leg Jeans",
+    "price": "1,400",
+    "originalprice": "1,800",
+    "rating": "4.3",
+    "review": "78"
+  },
+  {
+    "id": "31",
+    "category": "pants",
+    "image": "/images/products/pants/cottonpant.jpg",
+    "title": "Baggy Cotton Pant",
+    "price": "1,500",
+    "originalprice": "1,900",
+    "rating": "4.3",
+    "review": "69"
+  }
+]
