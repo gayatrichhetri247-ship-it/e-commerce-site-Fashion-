@@ -4,11 +4,16 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { useState } from "react";
 import PopupMessage from "./AddedSuccessfully";
+import { useCart } from "@/app/context/CartContext";
+
+
 const ProductCard = ({ product }) => {
   const [showPopup, setShowPopup] = useState(false);
 
+  const { addToCart } = useCart();
+
   const handleAddToCart = () => {
-    // Add to cart logic here
+    addToCart(product);
 
     setShowPopup(true);
 
@@ -16,6 +21,7 @@ const ProductCard = ({ product }) => {
       setShowPopup(false);
     }, 2000);
   };
+
   return (
     <div className="w-72 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg shadow-pink-200">
       <div className="relative h-80 w-full">
@@ -55,6 +61,7 @@ const ProductCard = ({ product }) => {
           Add to Cart
         </button>
       </div>
+
       <PopupMessage show={showPopup} message=" Added Cart Successfully! ♡" />
     </div>
   );

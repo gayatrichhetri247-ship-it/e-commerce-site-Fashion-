@@ -26,7 +26,7 @@ const page = () => {
       </div>
 
       <div className="flex mt-8 justify-between  px-4">
-        <ShopAll/>
+        <ShopAll />
         
     
       </div>

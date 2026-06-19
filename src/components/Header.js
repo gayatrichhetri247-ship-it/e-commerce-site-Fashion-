@@ -4,10 +4,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import AddCart from "@/components/AddCart";
 import { useTheme } from "next-themes";
+import { useCart } from "@/app/context/CartContext";
+// import { useCart } from "../app/context/CartContext.jsx";
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { cartItems } = useCart();
 
   return (
     <>
@@ -55,7 +58,7 @@ const Header = () => {
             </svg>
 
             <div className="absolute bottom-5 left-4 bg-red-500 text-white w-4 h-4 rounded-full">
-              <p className="text-xs ml-[5px] mt-[-3px]">3</p>
+              <p className="text-xs ml-[5px] mt-[-3px]">{cartItems.length}</p>
             </div>
           </button>
 
@@ -82,18 +85,19 @@ const Header = () => {
         }`}
       >
         <div className="flex justify-between items-center p-4 border-b">
-          
-          <div className="flex gap-1"> 
-            <h2 className=" mr-2"><svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 22 22"
-              fill="#f7529c"
-              className="size-7 cursor-pointer"
-            >
-              <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
-            </svg></h2>
+          <div className="flex gap-1">
+            <h2 className=" mr-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 22 22"
+                fill="#f7529c"
+                className="size-7 cursor-pointer"
+              >
+                <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
+              </svg>
+            </h2>
             <h2 className="text-2xl font-bold"> My Cart</h2>
-            </div>
+          </div>
 
           <button onClick={() => setShowCart(false)} className="text-2xl">
             ✕
