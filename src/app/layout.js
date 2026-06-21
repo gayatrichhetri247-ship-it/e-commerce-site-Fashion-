@@ -5,6 +5,7 @@ import { Roboto, Playfair_Display } from "next/font/google";
 import ProductCard from "@/components/ProductCrad";
 import FooterSection from "@/components/FooterSection";
 import { CartProvider } from "./context/CartContext";
+import { UserProvider } from "./context/UserContext";
 
 
 // const roboto = Roboto({
@@ -22,12 +23,13 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body className={playfair.className}>
+      <UserProvider>
        <CartProvider>
         <Header />
-        
         {children}
         <FooterSection/>
         </CartProvider>
+        </UserProvider>
       </body>
     </html>
   );

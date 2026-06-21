@@ -1,45 +1,70 @@
 import React from "react";
 import Link from "next/link";
-const page = () => {
+
+const Page = () => {
   return (
-    <div className="flex justify-between items-center h-screen px-14 py-10  gap-28 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100">
-      <div className="flex gap-4 flex-col">
-        <div className="px-6 h-10 rounded-3xl text-lg bg-white w-fit flex gap-4 items-center border border-pink-200">
+    <div className="flex flex-col lg:flex-row justify-between items-center min-h-screen lg:h-screen px-6 sm:px-10 lg:px-14 py-10 gap-12 lg:gap-20 xl:gap-28 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100">
+      
+      {/* Left Content Column */}
+      <div className="flex gap-4 flex-col items-center lg:items-start text-center lg:text-left mt-10 lg:mt-0 order-2 lg:order-1">
+        {/* Collection Tag */}
+        <div className="px-6 h-10 rounded-3xl text-lg bg-white w-fit flex gap-4 items-center border border-pink-200 shadow-sm">
           <img
-            src="images/home-page/tulip.png"
+            src="/images/home-page/tulip.png"
             alt="Tulip"
             className="w-5 h-5"
-          />{" "}
-          <span className="text-sm">New Spring Collection</span>{" "}
+          />
+          <span className="text-sm font-medium text-gray-700">New Spring Collection</span>
         </div>
-        <div className="flex flex-col gap-2 ">
-          <span className="text-7xl font-extrabold text-amber-950">Bloom into</span>
-          <span className="text-pink-500 text-7xl font-extrabold capitalize"> your softest era</span>
+
+        {/* Headings */}
+        <div className="flex flex-col gap-1 sm:gap-2">
+          <span className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold text-amber-950 tracking-tight">
+            Bloom into
+          </span>
+          <span className="text-pink-500 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold capitalize tracking-tight">
+            your softest era
+          </span>
         </div>
-        <div className=" text-md w-96 text-gray-500">
+
+        {/* Description */}
+        <div className="text-sm sm:text-md max-w-sm sm:max-w-md text-gray-500 leading-relaxed balance-text">
           Dreamy dresses, cloud-soft knits and twirly skirts in every shade of
           pretty. Dress like the main character, darling. ♡
         </div>
-        <div className="flex gap-6 mt-6">
-          <Link href="/products"><div className="w-60 text-center cursor-pointer py-4 text-lg bg-pink-600 text-white rounded-3xl font-bold">Shop Now</div></Link>
-          <Link href="/products"><div className="w-60 text-center cursor-pointer py-4 text-lg bg-white text-pink-600 border border-pink-600 rounded-3xl font-bold">Explore Dresses</div></Link>
+
+        {/* Call to Actions */}
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6 w-full sm:w-auto">
+          <Link href="/products" className="w-full sm:w-60">
+            <div className="text-center cursor-pointer py-3.5 text-md sm:text-lg bg-pink-600 text-white rounded-3xl font-bold shadow-md hover:bg-pink-700 transition-colors">
+              Shop Now
+            </div>
+          </Link>
+          <Link href="/products" className="w-full sm:w-60">
+            <div className="text-center cursor-pointer py-3.5 text-md sm:text-lg bg-white text-pink-600 border border-pink-600 rounded-3xl font-bold hover:bg-pink-50 transition-colors">
+              Explore Dresses
+            </div>
+          </Link>
         </div>
       </div>
-      <div className="bottom-18">
-        
+
+      {/* Right Image Container */}
+      <div className="relative order-1 lg:order-2 max-w-xs sm:max-w-md lg:max-w-none">
         <img
           src="/images/home-page/home-girl-image.jpg"
           alt="Image of a girl in a spring dress"
-          className="w-[450px] h-auto border-8 border-white rounded-2xl "
+          className="w-full lg:w-[400px] xl:w-[450px] h-auto border-4 sm:border-8 border-white rounded-2xl shadow-xl"
         />
-         <div className= " relative bottom-[520px] left-76 rotate-12 flex flex-col  items-start bg-pink-600 w-fit py-2 px-6 text-white font-bold text-sm  rounded-4xl  ">
+        
+        {/* Promotional Sale Badge */}
+        <div className="absolute -top-4 -right-4 sm:-right-8 rotate-12 flex flex-col items-start bg-pink-600 w-fit py-2 px-4 sm:px-6 text-white font-bold text-xs sm:text-sm rounded-3xl sm:rounded-4xl shadow-lg">
           <span>20% Off</span>
-          <span>End of Season Sale</span>
+          <span className="whitespace-nowrap">End of Season Sale</span>
         </div>
-       
       </div>
+
     </div>
   );
 };
 
-export default page;
+export default Page;
