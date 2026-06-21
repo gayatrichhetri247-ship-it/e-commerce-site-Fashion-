@@ -5,7 +5,7 @@ import { Roboto, Playfair_Display } from "next/font/google";
 import FooterSection from "@/components/FooterSection";
 import { CartProvider } from "./context/CartContext";
 import { UserProvider } from "./context/UserContext";
-import ConditionalMoodSection from "@/components/ConditionalMoodSection";
+import HomeOnlySections from "@/components/HomeOnlySections";
 
 // const roboto = Roboto({
 //   subsets: ["latin"],
@@ -26,7 +26,7 @@ const RootLayout = ({ children }) => {
        <CartProvider>
         <Header />
         {children}
-        <ConditionalMoodSection />
+        <HomeOnlySections />
         <FooterSection />
         </CartProvider>
         </UserProvider>

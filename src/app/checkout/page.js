@@ -223,7 +223,7 @@ export default function CheckoutPage() {
               onClick={handleKhaltiPayment}
               className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-full font-semibold transition"
             >
-              Pay with Khalti • NPR {subtotal.toLocaleString()}
+              Pay Now • NPR {subtotal.toLocaleString()}
             </button>
           </form>
         </div>
