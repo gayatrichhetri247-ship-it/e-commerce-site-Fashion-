@@ -3,13 +3,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "./ProductCrad";
-
-import dresses from "../data/dresses.json";
-import tops from "../data/tops.json";
-import pants from "../data/pants.json";
-import skirts from "../data/skirts.json";
-import accessories from "../data/accessories.json";
-
 import { useProducts } from "@/app/context/ProductContext";
 
 const ShopAll = () => {
@@ -40,32 +33,15 @@ useEffect(() => {
   }
 }, [categoryParam]);
 
-  const datasetMap = {
-    dresses,
-    tops,
-    pants,
-    skirts,
-    accessories,
-  };
-
   const allProducts = useMemo(() => {
-    const jsonProducts = Object.entries(datasetMap).flatMap(
-      ([cat, items]) =>
-        items.map((item) => ({
-          ...item,
-          category: cat.toLowerCase(),
-        }))
-    );
-
-    const adminProducts = customProducts.map((item) => ({
+    return customProducts.map((item) => ({
       ...item,
       title: item.title || item.name,
       category: item.category?.toLowerCase() || "uncategorized",
       rating: item.rating || 5,
       review: item.review || 0,
+      id: String(item.id),
     }));
-
-    return [...jsonProducts, ...adminProducts];
   }, [customProducts]);
 
   const filteredByCategory = useMemo(() => {

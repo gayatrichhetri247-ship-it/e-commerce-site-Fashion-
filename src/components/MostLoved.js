@@ -1,25 +1,19 @@
 "use client";
 
-import dresses from "../data/dresses.json";
-import tops from "../data/tops.json";
-import pants from "../data/pants.json";
-import skirts from "../data/skirts.json";
-import accessories from "../data/accessories.json";
-
+import { useMemo } from "react";
 import ProductCard from "./ProductCrad";
+import { useProducts } from "@/app/context/ProductContext";
 
 const MostLoved = () => {
-  const allProducts = [
-    ...dresses.map((item) => ({ ...item, category: "dresses" })),
-    ...tops.map((item) => ({ ...item, category: "tops" })),
-    ...pants.map((item) => ({ ...item, category: "pants" })),
-    ...skirts.map((item) => ({ ...item, category: "skirts" })),
-    ...accessories.map((item) => ({ ...item, category: "accessories" })),
-  ];
+  const { products } = useProducts();
 
-  const topRatedProducts = [...allProducts]
-    .sort((a, b) => Number(b.rating || 0) - Number(a.rating || 0))
-    .slice(0, 7);
+  const topRatedProducts = useMemo(
+    () =>
+      [...products]
+        .sort((a, b) => Number(b.rating || 0) - Number(a.rating || 0))
+        .slice(0, 7),
+    [products]
+  );
 
   return (
     <section className="w-full px-14 py-12 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50">

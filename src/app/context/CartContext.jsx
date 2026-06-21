@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 
-const CartContext = createContext(null);
+const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
@@ -11,37 +11,47 @@ export function CartProvider({ children }) {
 
   // Load cart from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem("cart");
+    try {
+      const savedCart = localStorage.getItem("cart");
 
-    if (saved) {
-      try {
-        setCartItems(JSON.parse(saved));
-      } catch (error) {
-        console.error("Failed to parse cart:", error);
+      if (savedCart) {
+        setCartItems(JSON.parse(savedCart));
       }
+    } catch (error) {
+      console.error("Failed to load cart:", error);
     }
 
     setMounted(true);
   }, []);
 
-  // Save cart to localStorage
+  // Save cart whenever cart changes
   useEffect(() => {
-    if (mounted) {
-      localStorage.setItem("cart", JSON.stringify(cartItems));
+    if (!mounted) return;
+
+    try {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(cartItems)
+      );
+    } catch (error) {
+      console.error("Failed to save cart:", error);
     }
   }, [cartItems, mounted]);
 
-  // ADD TO CART
+  // Add to cart
   const addToCart = (product) => {
     setCartItems((prev) => {
-      const existing = prev.find(
+      const existingItem = prev.find(
         (item) => item.id === product.id
       );
 
-      if (existing) {
+      if (existingItem) {
         return prev.map((item) =>
           item.id === product.id
-            ? { ...item, qty: item.qty + 1 }
+            ? {
+                ...item,
+                qty: (item.qty || 1) + 1,
+              }
             : item
         );
       }
@@ -50,20 +60,20 @@ export function CartProvider({ children }) {
         ...prev,
         {
           ...product,
-          qty: 1,
+          qty: product.qty || 1,
         },
       ];
     });
   };
 
-  // REMOVE ITEM
+  // Remove single product
   const removeFromCart = (id) => {
     setCartItems((prev) =>
       prev.filter((item) => item.id !== id)
     );
   };
 
-  // UPDATE QUANTITY
+  // Update quantity
   const updateQty = (id, qty) => {
     setCartItems((prev) =>
       prev.map((item) =>
@@ -77,16 +87,35 @@ export function CartProvider({ children }) {
     );
   };
 
-  // CLEAR CART
+  // Clear entire cart
   const clearCart = () => {
     setCartItems([]);
-    localStorage.removeItem("cart");
+
+    try {
+      localStorage.removeItem("cart");
+    } catch (error) {
+      console.error("Failed to clear cart:", error);
+    }
   };
+
+  // Total items count
+  const cartCount = cartItems.reduce(
+    (total, item) => total + (item.qty || 1),
+    0
+  );
+
+  // Total amount
+  const cartTotal = cartItems.reduce((total, item) => {
+    const price = Number(item.price || 0);
+    return total + price * (item.qty || 1);
+  }, 0);
 
   return (
     <CartContext.Provider
       value={{
         cartItems,
+        cartCount,
+        cartTotal,
         addToCart,
         removeFromCart,
         updateQty,
@@ -105,7 +134,7 @@ export function useCart() {
 
   if (!context) {
     throw new Error(
-      "CartProvider missing or duplicate context file"
+      "useCart must be used inside CartProvider"
     );
   }
 
