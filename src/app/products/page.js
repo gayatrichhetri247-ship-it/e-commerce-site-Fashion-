@@ -6,7 +6,7 @@ import ProductCard from "@/components/ProductCrad";
 
 const Page = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 flex flex-col items-center p-4 sm:p-8">
+    <div className="min-h-screen bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50 flex flex-col items-center p-4 sm:p-8">
       
       {/* Header Container */}
       <div className="flex flex-col items-center text-center mt-4 sm:mt-6">

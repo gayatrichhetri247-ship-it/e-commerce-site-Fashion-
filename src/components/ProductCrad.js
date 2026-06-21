@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
     <div className="w-full overflow-hidden rounded-xl border border-gray-100 bg-white shadow-md shadow-pink-200/40 hover:shadow-lg hover:shadow-pink-200/60 transition-all duration-300 flex flex-col group">
       
       {/* Product Image Frame Wrapper */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-gray-50">
+      <div className="relative aspect-3/4 w-full overflow-hidden bg-gray-50">
         <Image
           src={product.image}
           alt={product.title}
@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Product Information Payload Details */}
-      <div className="p-3 sm:p-4 flex flex-col flex-grow">
+      <div className="p-3 sm:p-4 flex flex-col grow">
         {/* Category Label */}
         <p className="text-[10px] sm:text-xs font-bold text-pink-600 uppercase tracking-wider">
           {product.category}

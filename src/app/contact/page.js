@@ -2,7 +2,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="min-h-screen w-full p-4 sm:p-8 md:p-12 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 flex flex-col items-center gap-6">
+    <div className="min-h-screen w-full p-4 sm:p-8 md:p-12 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50 flex flex-col items-center gap-6">
       
       {/* Top Header Banner */}
       <div className="flex flex-col gap-1.5 text-center mt-4">

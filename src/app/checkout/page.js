@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import ClientOnly from "@/components/ClientOnly";
 import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useUser } from "../context/UserContext";
@@ -40,8 +41,9 @@ export default function CheckoutPage() {
     });
   }, [user]);
 
-  const handleKhaltiPayment = async () => {
+  const handlePlaceOrder = async () => {
     setMessage("");
+    let orderId;
 
     // Validation
     if (
@@ -61,52 +63,74 @@ export default function CheckoutPage() {
     }
 
     try {
-      const response = await fetch("/api/khalti", {
+      // Create an order record on the server to get a unique Order ID
+      const createResp = await fetch("/api/orders", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          return_url: "http://localhost:3000/payment-success",
-          website_url: "http://localhost:3000",
-          amount: subtotal * 100,
-          purchase_order_id: `ORDER-${Date.now()}`,
-          purchase_order_name: "Flower Shop Order",
-          customer_info: {
+          customer: {
             name: formData.fullName,
             email: formData.email,
+            address: formData.address,
+            city: formData.city,
+            zip: formData.zip,
           },
+          items: cartItems,
+          subtotal,
+          note: "Order placed",
         }),
       });
 
-      const data = await response.json();
-
-      if (data.payment_url) {
-        window.location.href = data.payment_url;
-      } else {
-        setMessage("Payment successful.");
+      const createData = await createResp.json();
+      if (!createData.ok) {
+        setMessage("Failed to create order. Please try again.");
+        return;
       }
+
+      orderId = createData.orderId;
+
+      // Mark order as paid and redirect to success page
+      let paymentMarked = false;
+      try {
+        const encodedId = encodeURIComponent(orderId);
+        const patchResp = await fetch(`/api/orders/${encodedId}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: "paid", paymentStatus: "paid" }),
+        });
+        const patchData = await patchResp.json();
+        if (patchData.ok) {
+          paymentMarked = true;
+        }
+      } catch (e) {
+        console.error("Failed to mark order paid:", e);
+      }
+
+      // Redirect to success page to show orderId and details
+      window.location.href = `/payment-success?orderId=${encodeURIComponent(orderId)}`;
     } catch (error) {
       console.error(error);
-      setMessage("Payment failed. Please try again.");
+      setMessage("Failed to place order. Please try again.");
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 p-6">
       <h1 className="text-3xl font-bold mb-6">Checkout</h1>
-
-      {!isLoggedIn && (
-        <div className="mb-6 bg-yellow-100 border border-yellow-300 text-yellow-800 p-4 rounded-xl">
-          Please login first to auto-fill your shipping details.
-          <Link
-            href="/client/login"
-            className="ml-2 text-pink-600 font-semibold underline"
-          >
-            Login
-          </Link>
-        </div>
-      )}
+      {/* The login prompt depends on client-only state (localStorage). Render only on client to avoid SSR hydration mismatch. */}
+      <ClientOnly>
+        {!isLoggedIn && (
+          <div className="mb-6 bg-yellow-100 border border-yellow-300 text-yellow-800 p-4 rounded-xl">
+            Please login first to auto-fill your shipping details.
+            <Link
+              href="/client/login"
+              className="ml-2 text-pink-600 font-semibold underline"
+            >
+              Login
+            </Link>
+          </div>
+        )}
+      </ClientOnly>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* SHIPPING FORM */}
@@ -220,10 +244,10 @@ export default function CheckoutPage() {
 
             <button
               type="button"
-              onClick={handleKhaltiPayment}
+              onClick={handlePlaceOrder}
               className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-full font-semibold transition"
             >
-              Pay Now • NPR {subtotal.toLocaleString()}
+              Place Order • NPR {subtotal.toLocaleString()}
             </button>
           </form>
         </div>

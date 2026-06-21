@@ -6,7 +6,7 @@ const MoodCard = ({ title, icon, image, link }) => {
   return (
     <Link 
       href={link}
-      className="group relative block w-full h-[380px] sm:h-[420px] rounded-4xl overflow-hidden shadow-md shadow-pink-200/30 bg-gray-100 transition-all duration-300 hover:shadow-xl hover:shadow-pink-300/40 hover:-translate-y-1 cursor-pointer"
+      className="group relative block w-full h-95 sm:h-105 rounded-4xl overflow-hidden shadow-md shadow-pink-200/30 bg-gray-100 transition-all duration-300 hover:shadow-xl hover:shadow-pink-300/40 hover:-translate-y-1 cursor-pointer"
     >
       {/* Optimized Next.js Background Image Container */}
       <div className="absolute inset-0 w-full h-full">
@@ -21,7 +21,7 @@ const MoodCard = ({ title, icon, image, link }) => {
       </div>
       
       {/* Dark Subtle Bottom Vignette Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
       {/* Content Meta Information Box */}
       <div className="absolute bottom-0 left-0 p-6 flex flex-col gap-1 text-left select-none z-10">

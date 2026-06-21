@@ -1,18 +1,20 @@
 import React from "react";
 import Link from "next/link";
-
+import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-center min-h-screen lg:h-screen px-6 sm:px-10 lg:px-14 py-10 gap-12 lg:gap-20 xl:gap-28 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100">
+    <div className="flex flex-col lg:flex-row justify-between items-center min-h-screen lg:h-screen px-6 sm:px-10 lg:px-14 py-10 gap-12 lg:gap-20 xl:gap-28 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-100">
       
       {/* Left Content Column */}
       <div className="flex gap-4 flex-col items-center lg:items-start text-center lg:text-left mt-10 lg:mt-0 order-2 lg:order-1">
         {/* Collection Tag */}
         <div className="px-6 h-10 rounded-3xl text-lg bg-white w-fit flex gap-4 items-center border border-pink-200 shadow-sm">
-          <img
+          <Image
             src="/images/home-page/tulip.png"
             alt="Tulip"
+            width={5}
+            height={5}
             className="w-5 h-5"
           />
           <span className="text-sm font-medium text-gray-700">New Spring Collection</span>
@@ -54,7 +56,8 @@ const Page = () => {
         <img
           src="/images/home-page/home-girl-image.jpg"
           alt="Image of a girl in a spring dress"
-          className="w-full lg:w-[400px] xl:w-[450px] h-auto border-4 sm:border-8 border-white rounded-2xl shadow-xl"
+         
+          className="w-full lg:w-100 xl:w-112.5 h-auto border-4 sm:border-8 border-white rounded-2xl shadow-xl"
         />
         
         {/* Promotional Sale Badge */}

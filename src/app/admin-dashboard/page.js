@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
-
+import Image from "next/image";
 const Page = () => {
   return (
-    <div className="p-4 sm:p-8 md:p-14 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 min-h-screen flex flex-col items-center gap-6">
+    <div className="p-4 sm:p-8 md:p-14 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50 min-h-screen flex flex-col items-center gap-6">
       
       {/* Dashboard Top Header Banner */}
       <div className="flex flex-col items-center text-center gap-2">
@@ -114,13 +114,13 @@ const Page = () => {
           </div>
 
           {/* Infinite Scrollable or Rendered Items Layout Wrapper */}
-          <div className="flex flex-col gap-4 max-h-[580px] overflow-y-auto pr-1 no-scrollbar">
+          <div className="flex flex-col gap-4 max-h-145 overflow-y-auto pr-1 no-scrollbar">
             
             {/* Repeated Product Item Mock Block Row Template */}
             {[1, 2, 3, 4, 5, 6, 7].map((item) => (
               <div key={item} className="flex justify-between items-center gap-4 p-2 rounded-xl hover:bg-pink-50/40 transition-colors border-b border-gray-50 last:border-0 pb-3 last:pb-0">
                 <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                  <img
+                  <Image
                     src="/images/about/story.jpg"
                     alt="product preview thumbnail"
                     className="h-14 w-14 sm:h-16 sm:w-16 rounded-lg object-cover shrink-0 border border-gray-100 shadow-sm"

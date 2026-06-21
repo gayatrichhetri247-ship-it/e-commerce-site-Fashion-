@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
-
+import Image from "next/image";
 const Page = () => {
   return (
-    <div className="flex flex-col items-center gap-6 py-10 px-4 sm:px-8 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100 min-h-screen">
+    <div className="flex flex-col items-center gap-6 py-10 px-4 sm:px-8 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-100 min-h-screen">
       {/* Intro Header Section */}
       <div className="text-4xl animate-pulse">🌸</div>
       <h1 className="text-3xl sm:text-4xl font-extrabold text-center tracking-tight text-amber-950">
@@ -60,7 +60,7 @@ const Page = () => {
       </div>
 
       {/* Call to Action Banner Box */}
-      <div className="flex flex-col items-center justify-center mt-12 w-full max-w-4xl px-6 py-12 bg-gradient-to-b from-pink-300 to-pink-100 rounded-3xl gap-4 text-center shadow-lg mx-2">
+      <div className="flex flex-col items-center justify-center mt-12 w-full max-w-4xl px-6 py-12 bg-linear-to-b from-pink-300 to-pink-100 rounded-3xl gap-4 text-center shadow-lg mx-2">
         <div className="text-4xl">🎀</div>
         <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">Come bloom with us</h2>
         <p className="max-w-sm text-xs sm:text-sm text-gray-750 font-medium">

@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 export default function PromoBanner() {
   return (
-    <div className="w-full bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50">
+    <div className="w-full bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50">
     <div className="w-full max-w-7xl mx-auto px-6 py-8 ">
       {/* Main Card Container */}
       <div className="relative w-full bg-[#ff6392] rounded-[2.5rem] px-6 py-12 md:py-16 text-center flex flex-col items-center justify-center shadow-sm overflow-hidden">

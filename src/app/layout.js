@@ -1,6 +1,7 @@
 import React from "react";
 import "./globals.css";
 import Header from "@/components/Header";
+import ClientOnly from "@/components/ClientOnly";
 import { Roboto, Playfair_Display } from "next/font/google";
 import FooterSection from "@/components/FooterSection";
 import { CartProvider } from "./context/CartContext";
@@ -24,9 +25,13 @@ const RootLayout = ({ children }) => {
       <body className={playfair.className}>
       <UserProvider>
        <CartProvider>
-        <Header />
+        <ClientOnly>
+          <Header />
+        </ClientOnly>
         {children}
-        <HomeOnlySections />
+        <ClientOnly>
+          <HomeOnlySections />
+        </ClientOnly>
         <FooterSection />
         </CartProvider>
         </UserProvider>

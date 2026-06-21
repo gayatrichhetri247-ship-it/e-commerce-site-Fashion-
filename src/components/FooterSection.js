@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const FooterSection = () => {
   return (
-    <footer className="bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100 px-6 sm:px-12 pt-14 pb-4">
+    <footer className="bg-linear-to-r from-pink-100 via-yellow-50 to-pink-100 px-6 sm:px-12 pt-14 pb-4">
       {/* Footer Content Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
         

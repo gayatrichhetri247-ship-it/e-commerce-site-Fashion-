@@ -4,7 +4,7 @@ import MoodCard from "./MoodCart";
 
 export default function ShopByMood() {
   return (
-    <section className="w-full min-h-screen bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 px-4 py-12 sm:py-16 md:py-20 flex flex-col items-center gap-10 sm:gap-14">
+    <section className="w-full min-h-screen bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50 px-4 py-12 sm:py-16 md:py-20 flex flex-col items-center gap-10 sm:gap-14">
       
       {/* Header Block Section */}
       <div className="text-center flex flex-col gap-2.5">

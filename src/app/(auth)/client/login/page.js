@@ -61,7 +61,7 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center px-4 py-10 md:py-16 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100">
+    <div className="min-h-screen flex justify-center items-center px-4 py-10 md:py-16 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-100">
       {/* Login Form Card Box */}
       <div className="flex flex-col items-center border border-pink-200/60 bg-pink-100/90 backdrop-blur-sm w-full max-w-md h-fit p-5 sm:p-8 rounded-2xl shadow-2xl shadow-pink-300/50">
         

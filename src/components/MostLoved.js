@@ -22,7 +22,7 @@ const MostLoved = () => {
     .slice(0, 7);
 
   return (
-    <section className="w-full px-14 py-12 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50">
+    <section className="w-full px-14 py-12 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50">
       <div className="flex flex-col items-center mb-8">
         <h2 className="text-3xl md:text-4xl font-extrabold text-amber-950">
           Most Loved

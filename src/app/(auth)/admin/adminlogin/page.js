@@ -19,7 +19,7 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 flex justify-center items-center px-4 py-10 md:py-14">
+    <div className="min-h-screen bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50 flex justify-center items-center px-4 py-10 md:py-14">
       {/* Login Card Box */}
       <div className="flex flex-col items-center bg-white rounded-2xl w-full max-w-md h-fit py-8 px-4 sm:px-6 shadow-xl shadow-pink-300/60 border border-pink-100/50">
         
