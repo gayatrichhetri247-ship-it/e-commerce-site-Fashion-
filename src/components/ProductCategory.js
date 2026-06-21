@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import ProductCard from "./ProductCrad";
 
 import dresses from "../data/dresses.json";
@@ -10,9 +11,28 @@ import skirts from "../data/skirts.json";
 import accessories from "../data/accessories.json";
 
 const ShopAll = () => {
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("feature");
   const [category, setCategory] = useState("all");
+
+  const categories = [
+    "all",
+    "dresses",
+    "tops",
+    "pants",
+    "skirts",
+    "accessories",
+  ];
+
+  useEffect(() => {
+    const queryCategory = searchParams.get("category")?.toLowerCase();
+    if (queryCategory && categories.includes(queryCategory)) {
+      setCategory(queryCategory);
+    } else {
+      setCategory("all");
+    }
+  }, [searchParams]);
 
   const datasetMap = {
     dresses,
@@ -74,15 +94,6 @@ const ShopAll = () => {
         return arr;
     }
   }, [searched, sort]);
-
-  const categories = [
-    "all",
-    "dresses",
-    "tops",
-    "pants",
-    "skirts",
-    "accessories",
-  ];
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto px-2">

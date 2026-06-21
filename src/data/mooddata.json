@@ -3,31 +3,31 @@
     "id": 1,
     "title": "Dresses",
     "image":"/images/products/dresses/polkadotdress.jpg",
-    "link": "/shop?category=dresses"
+    "link": "/products?category=dresses"
   },
    {
     "id": 2,
     "title": "pants",
     "image": "/images/products/pants/linen.jpg",
-    "link": "/shop/pants"
+    "link": "/products?category=pants"
   },
 
   {
     "id": 3,
     "title": "Tops",
     "image": "/images/products/tops/sideknottop.jpg",
-    "link": "/shop/tops"
+    "link": "/products?category=tops"
   },
   {
     "id": 4,
     "title": "Skirts",
     "image": "/images/products/skirts/miniskirt.jpg",
-    "link": "/shop/skirts"
+    "link": "/products?category=skirts"
   },
   {
     "id": 5,
     "title": "Accessories",
     "image": "/images/products/accessories/pinkcrystalflowernecklace.jpg",
-    "link": "/shop/accessories"
+    "link": "/products?category=accessories"
   }
 ]

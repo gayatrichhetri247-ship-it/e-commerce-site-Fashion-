@@ -2,15 +2,27 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import AddCart from "@/components/AddCart";
 import { useTheme } from "next-themes";
 import { useCart } from "@/app/context/CartContext";
 
 const Header = () => {
+  const pathname = usePathname();
   const [showCart, setShowCart] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const { cartItems } = useCart();
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/products", label: "Products" },
+    { href: "/order", label: "Order" },
+    { href: "/contact", label: "Contact" },
+  ];
+
+  const isActiveLink = (href) => pathname === href;
 
   return (
     <>
@@ -23,12 +35,20 @@ const Header = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex gap-8 font-medium text-gray-700 hover:text-pink-600 transition-colors">
-          <Link href="/" className="hover:text-pink-600">Home</Link>
-          <Link href="/about" className="hover:text-pink-600">About</Link>
-          <Link href="/products" className="hover:text-pink-600">Products</Link>
-          <Link href="/order" className="hover:text-pink-600">Order</Link>
-          <Link href="/contact" className="hover:text-pink-600">Contact</Link>
+        <nav className="hidden lg:flex gap-8 font-medium">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`transition-colors duration-200 text-sm ${
+                isActiveLink(link.href)
+                  ? "text-pink-600 font-semibold"
+                  : "text-gray-700 hover:text-pink-600"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         {/* Header Action Items */}
@@ -78,11 +98,20 @@ const Header = () => {
       {/* Mobile Navigation Dropdown Menu */}
       {isMenuOpen && (
         <nav className="lg:hidden fixed top-20 left-0 w-full bg-pink-50/95 backdrop-blur-md border-b border-pink-100 flex flex-col items-center gap-5 py-6 font-semibold text-gray-800 shadow-lg z-30 animate-fade-in-down">
-          <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-pink-600 w-full text-center py-2">Home</Link>
-          <Link href="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-pink-600 w-full text-center py-2">About</Link>
-          <Link href="/products" onClick={() => setIsMenuOpen(false)} className="hover:text-pink-600 w-full text-center py-2">Products</Link>
-          <Link href="/order" onClick={() => setIsMenuOpen(false)} className="hover:text-pink-600 w-full text-center py-2">Order</Link>
-          <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-pink-600 w-full text-center py-2">Contact</Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              className={`w-full text-center py-2 transition-colors duration-200 ${
+                isActiveLink(link.href)
+                  ? "text-pink-600"
+                  : "text-gray-800 hover:text-pink-600"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
       )}
 

@@ -2,11 +2,10 @@ import React from "react";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Roboto, Playfair_Display } from "next/font/google";
-import ProductCard from "@/components/ProductCrad";
 import FooterSection from "@/components/FooterSection";
 import { CartProvider } from "./context/CartContext";
 import { UserProvider } from "./context/UserContext";
-import ShopByMood from "@/components/ShopByMood";
+import ConditionalMoodSection from "@/components/ConditionalMoodSection";
 
 // const roboto = Roboto({
 //   subsets: ["latin"],
@@ -27,8 +26,8 @@ const RootLayout = ({ children }) => {
        <CartProvider>
         <Header />
         {children}
-           <ShopByMood/>
-        <FooterSection/>
+        <ConditionalMoodSection />
+        <FooterSection />
         </CartProvider>
         </UserProvider>
       </body>
