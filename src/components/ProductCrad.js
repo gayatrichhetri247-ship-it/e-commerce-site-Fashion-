@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Star } from "lucide-react";
 import { useState } from "react";
 import PopupMessage from "./AddedSuccessfully";
@@ -11,87 +10,110 @@ const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart(product);
+    const normalizedProduct = {
+      id: product.id || Date.now(),
+      title: product.title || product.name || "Untitled",
+      price: Number(product.price || 0),
+      image: product.image || "/fallback.jpg",
+      category: product.category || "uncategorized",
+      rating: product.rating || 0,
+      review: product.review || 0,
+      qty: 1,
+    };
+
+    addToCart(normalizedProduct);
+
     setShowPopup(true);
-
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 2000);
+    setTimeout(() => setShowPopup(false), 2000);
   };
-const isValidImage =
-  typeof product.image === "string" &&
-  (product.image.startsWith("/") ||
-    /^https?:\/\/.+\..+/.test(product.image));
 
-const safeImage = isValidImage
-  ? product.image
-  : "https://via.placeholder.com/400x600";
+  // Supports:
+  // /images/product.jpg
+  // https://images.unsplash.com/...
+  // blob:http://localhost...
+  // data:image/png;base64,...
+  const isValidImage =
+    typeof product?.image === "string" &&
+    (
+      product.image.startsWith("/") ||
+      product.image.startsWith("blob:") ||
+      product.image.startsWith("data:image") ||
+      /^https?:\/\/.+/.test(product.image)
+    );
+
+  const safeImage = isValidImage
+    ? product.image
+    : "/fallback.jpg";
 
   return (
     <div className="w-full overflow-hidden rounded-xl border border-gray-100 bg-white shadow-md shadow-pink-200/40 hover:shadow-lg hover:shadow-pink-200/60 transition-all duration-300 flex flex-col group">
-      {/* Product Image Frame Wrapper */}
-      <div className="relative aspect-3/4 w-full overflow-hidden bg-gray-50">
-        <Image
+
+      {/* IMAGE */}
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-gray-50">
+        <img
           src={safeImage}
-          alt={product.title || "product"}
-          fill
-          sizes="(max-w-640px) 100vw, (max-w-1024px) 50vw, 25vw"
-          priority={false}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          alt={product?.title || product?.name || "product"}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={(e) => {
+            e.currentTarget.src = "/fallback.jpg";
+          }}
         />
       </div>
 
-      {/* Product Information Payload Details */}
+      {/* CONTENT */}
       <div className="p-3 sm:p-4 flex flex-col grow">
-        {/* Category Label */}
+
         <p className="text-[10px] sm:text-xs font-bold text-pink-600 uppercase tracking-wider">
-          {product.category}
+          {product?.category || "uncategorized"}
         </p>
 
-        {/* Product Title */}
         <h3
-          className="mt-1 text-sm sm:text-base font-bold text-gray-800 line-clamp-1 tracking-tight"
-          title={product.title}
+          className="mt-1 text-sm sm:text-base font-bold text-gray-800 line-clamp-1"
+          title={product?.title || product?.name}
         >
-          {product.title}
+          {product?.title || product?.name || "Untitled"}
         </h3>
 
-        {/* Ratings block metadata */}
         <div className="mt-1.5 flex items-center gap-1">
-          <Star size={14} fill="#fcea5b" color="#fcea5b" className="shrink-0" />
+          <Star
+            size={14}
+            fill="#fcea5b"
+            color="#fcea5b"
+          />
           <span className="text-xs sm:text-sm font-bold text-gray-700">
-            {product.rating}
+            {product?.rating || 0}
           </span>
-          <span className="text-xs text-gray-400 font-medium">
-            ({product.review})
+          <span className="text-xs text-gray-400">
+            ({product?.review || 0})
           </span>
         </div>
 
-        {/* Pricing Stack */}
         <div className="mt-2.5 flex items-baseline gap-2 flex-wrap">
           <span className="text-base sm:text-lg font-extrabold text-amber-950">
-            Rs. {product.price}
+            Rs. {product?.price || 0}
           </span>
-          {product.originalprice && (
-            <span className="text-xs sm:text-sm text-gray-400 line-through font-medium">
+
+          {product?.originalprice && (
+            <span className="text-xs sm:text-sm text-gray-400 line-through">
               Rs. {product.originalprice}
             </span>
           )}
         </div>
 
-        {/* Button Wrapper - Pushed to bottom via margin-top-auto */}
         <div className="mt-auto pt-4">
           <button
             onClick={handleAddToCart}
-            className="w-full rounded-xl bg-pink-600 hover:bg-pink-700 active:scale-[0.98] py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-pink-100 transition-all cursor-pointer"
+            className="w-full rounded-xl bg-pink-600 hover:bg-pink-700 active:scale-[0.98] py-2.5 text-white font-bold transition"
           >
             Add to Cart
           </button>
         </div>
       </div>
 
-      {/* Notification Toast Trigger Popup */}
-      <PopupMessage show={showPopup} message=" Added Cart Successfully! ♡" />
+      <PopupMessage
+        show={showPopup}
+        message="Added to cart successfully ♡"
+      />
     </div>
   );
 };

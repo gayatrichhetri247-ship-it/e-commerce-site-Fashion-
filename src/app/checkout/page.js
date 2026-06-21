@@ -8,7 +8,7 @@ import { useCart } from "../context/CartContext";
 import { useUser } from "../context/UserContext";
 
 export default function CheckoutPage() {
-  const { cartItems } = useCart();
+  const { cartItems, clearCart } = useCart();
   const { user, isLoggedIn } = useUser();
 
   const [message, setMessage] = useState("");
@@ -106,8 +106,13 @@ export default function CheckoutPage() {
         console.error("Failed to mark order paid:", e);
       }
 
-      // Redirect to success page to show orderId and details
+      // Clear cart after successful order
+      clearCart();
+
+      // Redirect to success page
       window.location.href = `/payment-success?orderId=${encodeURIComponent(orderId)}`;
+
+      return;
     } catch (error) {
       console.error(error);
       setMessage("Failed to place order. Please try again.");
@@ -135,15 +140,11 @@ export default function CheckoutPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* SHIPPING FORM */}
         <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm">
-          <h2 className="text-lg font-semibold mb-4">
-            Shipping Details
-          </h2>
+          <h2 className="text-lg font-semibold mb-4">Shipping Details</h2>
 
           <form className="space-y-4">
             <div>
-              <label className="text-sm font-medium">
-                Full Name
-              </label>
+              <label className="text-sm font-medium">Full Name</label>
               <input
                 type="text"
                 value={formData.fullName}
@@ -158,9 +159,7 @@ export default function CheckoutPage() {
             </div>
 
             <div>
-              <label className="text-sm font-medium">
-                Email
-              </label>
+              <label className="text-sm font-medium">Email</label>
               <input
                 type="email"
                 value={formData.email}
@@ -175,9 +174,7 @@ export default function CheckoutPage() {
             </div>
 
             <div>
-              <label className="text-sm font-medium">
-                Street Address
-              </label>
+              <label className="text-sm font-medium">Street Address</label>
               <input
                 type="text"
                 value={formData.address}
@@ -194,9 +191,7 @@ export default function CheckoutPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium">
-                  City
-                </label>
+                <label className="text-sm font-medium">City</label>
                 <input
                   type="text"
                   value={formData.city}
@@ -212,9 +207,7 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label className="text-sm font-medium">
-                  ZIP
-                </label>
+                <label className="text-sm font-medium">ZIP</label>
                 <input
                   type="text"
                   value={formData.zip}
@@ -254,9 +247,7 @@ export default function CheckoutPage() {
 
         {/* ORDER SUMMARY */}
         <div className="bg-white rounded-2xl p-6 shadow-sm h-fit">
-          <h2 className="text-lg font-semibold mb-4">
-            Your Order
-          </h2>
+          <h2 className="text-lg font-semibold mb-4">Your Order</h2>
 
           <div className="space-y-4">
             {cartItems.map((item) => (
@@ -274,20 +265,13 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="flex-1">
-                  <p className="font-medium text-sm">
-                    {item.title}
-                  </p>
+                  <p className="font-medium text-sm">{item.title}</p>
 
-                  <p className="text-xs text-gray-500">
-                    Qty: {item.qty}
-                  </p>
+                  <p className="text-xs text-gray-500">Qty: {item.qty}</p>
                 </div>
 
                 <p className="font-semibold">
-                  NPR{" "}
-                  {(
-                    getPrice(item.price) * item.qty
-                  ).toLocaleString()}
+                  NPR {(getPrice(item.price) * item.qty).toLocaleString()}
                 </p>
               </div>
             ))}
@@ -296,9 +280,7 @@ export default function CheckoutPage() {
           <div className="mt-4 space-y-2 text-sm">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span>
-                NPR {subtotal.toLocaleString()}
-              </span>
+              <span>NPR {subtotal.toLocaleString()}</span>
             </div>
 
             <div className="flex justify-between">
@@ -309,9 +291,7 @@ export default function CheckoutPage() {
 
           <div className="border-t mt-4 pt-4 flex justify-between font-bold">
             <span>Total</span>
-            <span>
-              NPR {subtotal.toLocaleString()}
-            </span>
+            <span>NPR {subtotal.toLocaleString()}</span>
           </div>
         </div>
       </div>

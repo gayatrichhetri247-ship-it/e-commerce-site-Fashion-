@@ -9,53 +9,78 @@ export function CartProvider({ children }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Load cart from localStorage on mount
+  // Load cart from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("cart");
+
     if (saved) {
       try {
         setCartItems(JSON.parse(saved));
-      } catch (e) {
-        console.error("Failed to parse cart from localStorage:", e);
+      } catch (error) {
+        console.error("Failed to parse cart:", error);
       }
     }
+
     setMounted(true);
   }, []);
 
-  // Save cart to localStorage whenever it changes
+  // Save cart to localStorage
   useEffect(() => {
     if (mounted) {
       localStorage.setItem("cart", JSON.stringify(cartItems));
     }
   }, [cartItems, mounted]);
 
-  // ADD
+  // ADD TO CART
   const addToCart = (product) => {
     setCartItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+      const existing = prev.find(
+        (item) => item.id === product.id
+      );
 
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item,
+          item.id === product.id
+            ? { ...item, qty: item.qty + 1 }
+            : item
         );
       }
 
-      return [...prev, { ...product, qty: 1 }];
+      return [
+        ...prev,
+        {
+          ...product,
+          qty: 1,
+        },
+      ];
     });
   };
 
-  // REMOVE
+  // REMOVE ITEM
   const removeFromCart = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+    setCartItems((prev) =>
+      prev.filter((item) => item.id !== id)
+    );
   };
 
-  // UPDATE QTY
+  // UPDATE QUANTITY
   const updateQty = (id, qty) => {
     setCartItems((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, qty: Math.max(1, qty) } : item,
-      ),
+        item.id === id
+          ? {
+              ...item,
+              qty: Math.max(1, qty),
+            }
+          : item
+      )
     );
+  };
+
+  // CLEAR CART
+  const clearCart = () => {
+    setCartItems([]);
+    localStorage.removeItem("cart");
   };
 
   return (
@@ -65,6 +90,7 @@ export function CartProvider({ children }) {
         addToCart,
         removeFromCart,
         updateQty,
+        clearCart,
         isCartOpen,
         setIsCartOpen,
       }}
@@ -78,7 +104,9 @@ export function useCart() {
   const context = useContext(CartContext);
 
   if (!context) {
-    throw new Error("CartProvider missing or duplicate context file");
+    throw new Error(
+      "CartProvider missing or duplicate context file"
+    );
   }
 
   return context;

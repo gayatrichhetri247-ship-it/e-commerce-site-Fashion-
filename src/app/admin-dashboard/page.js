@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useProducts } from "../context/ProductContext";
 const Page = () => {
+  const [imagePreview, setImagePreview] = useState("");
 const { products, addProduct, removeProduct } = useProducts();
 
   const [formData, setFormData] = useState({
@@ -26,19 +27,29 @@ const { products, addProduct, removeProduct } = useProducts();
 const handleSubmit = (e) => {
   e.preventDefault();
 
-  if (!formData.name || !formData.category || !formData.price || !formData.image) {
+  if (
+    !formData.name ||
+    !formData.category ||
+    !formData.price ||
+    !formData.image
+  ) {
     alert("Fill required fields");
     return;
   }
 
   addProduct({
     id: Date.now(),
-    title: formData.name,              // IMPORTANT FIX
+    title: formData.name,
+    name: formData.name,
     category: formData.category.toLowerCase(),
     price: Number(formData.price),
     image: formData.image,
-    colors: formData.colors,
-    sizes: formData.sizes,
+    colors: formData.colors
+      ? formData.colors.split(",").map((c) => c.trim())
+      : [],
+    sizes: formData.sizes
+      ? formData.sizes.split(",").map((s) => s.trim())
+      : [],
     description: formData.description,
     rating: 5,
     review: 0,
@@ -53,6 +64,24 @@ const handleSubmit = (e) => {
     sizes: "",
     description: "",
   });
+
+  setImagePreview("");
+
+  alert("Product added successfully!");
+};
+const handleImageUpload = (e) => {
+  const file = e.target.files?.[0];
+
+  if (!file) return;
+
+  const imageUrl = URL.createObjectURL(file);
+
+  setImagePreview(imageUrl);
+
+  setFormData((prev) => ({
+    ...prev,
+    image: imageUrl,
+  }));
 };
 
   return (
@@ -121,19 +150,26 @@ const handleSubmit = (e) => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs sm:text-sm font-bold text-gray-700">
-                Image Url
-              </label>
-              <input
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
-                type="url"
-                placeholder="https://image1/..."
-                className="text-sm border border-gray-200 p-2.5 rounded-xl bg-white focus:outline-pink-400"
-              />
-            </div>
+            <div className="flex flex-col gap-2">
+  <label className="text-xs sm:text-sm font-bold text-gray-700">
+    Product Image
+  </label>
+
+  <input
+    type="file"
+    accept="image/*"
+    onChange={handleImageUpload}
+    className="text-sm border border-gray-200 p-2.5 rounded-xl bg-white"
+  />
+
+  {imagePreview && (
+    <img
+      src={imagePreview}
+      alt="Preview"
+      className="w-32 h-32 rounded-xl object-cover border border-gray-200"
+    />
+  )}
+</div>
 
             {/* Split Row: Colors & Sizes */}
             <div className="flex flex-col sm:flex-row justify-between w-full gap-4 sm:gap-6">
