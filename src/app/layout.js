@@ -6,7 +6,7 @@ import ProductCard from "@/components/ProductCrad";
 import FooterSection from "@/components/FooterSection";
 import { CartProvider } from "./context/CartContext";
 import { UserProvider } from "./context/UserContext";
-
+import ShopByMood from "@/components/ShopByMood";
 
 // const roboto = Roboto({
 //   subsets: ["latin"],
@@ -27,6 +27,7 @@ const RootLayout = ({ children }) => {
        <CartProvider>
         <Header />
         {children}
+           <ShopByMood/>
         <FooterSection/>
         </CartProvider>
         </UserProvider>

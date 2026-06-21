@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
+
 const Page = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center min-h-screen lg:h-screen px-6 sm:px-10 lg:px-14 py-10 gap-12 lg:gap-20 xl:gap-28 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100">
@@ -62,6 +63,7 @@ const Page = () => {
           <span className="whitespace-nowrap">End of Season Sale</span>
         </div>
       </div>
+      
 
     </div>
   );
