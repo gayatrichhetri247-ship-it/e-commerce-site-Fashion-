@@ -11,11 +11,17 @@ const ProductCard = ({ product }) => {
   const { addToCart, removeFromCart } = useCart();
   const { removeProduct } = useProducts();
 
+  const parsePrice = (value) => {
+    if (value == null) return 0;
+    const normalized = typeof value === "string" ? value.replace(/[^0-9.]/g, "") : String(value);
+    return Number(normalized) || 0;
+  };
+
   const handleAddToCart = () => {
     const normalizedProduct = {
       id: product.id || Date.now(),
       title: product.title || product.name || "Untitled",
-      price: Number(product.price || 0),
+      price: parsePrice(product.price),
       image: product.image || "/fallback.jpg",
       category: product.category || "uncategorized",
       rating: product.rating || 0,

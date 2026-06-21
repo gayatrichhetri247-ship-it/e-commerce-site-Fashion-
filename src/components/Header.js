@@ -5,16 +5,18 @@ import Link from "next/link";
 import AddCart from "@/components/AddCart";
 import { useTheme } from "next-themes";
 import { useCart } from "@/app/context/CartContext";
-// import { useCart } from "../app/context/CartContext.jsx";
+import { useUser } from "@/app/context/UserContext";
+import ProfileDropdown from "@/components/ProfileDropdown";
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const { theme, setTheme } = useTheme();
   const { cartItems } = useCart();
+  const { user, isLoggedIn } = useUser();
 
   return (
     <>
-      <header className="flex justify-between top-0 items-center h-auto px-10 border-b-2 border-pink-100 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50">
+      <header className="flex justify-between top-0 items-center h-auto px-10 border-b-2 border-pink-100 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50">
         <div className="h-20 w-52 flex items-center">
           <Link href="/">
             <img src="/images/shoplogo.png" />
@@ -43,17 +45,21 @@ const Header = () => {
             </svg>
 
             {cartItems.length > 0 && (
-              <span className="absolute -top-2 -right-2 min-w-5 h-5 px-1 flex items-center justify-center text-[px] font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full shadow-md animate-bounce">
+              <span className="absolute -top-2 -right-2 min-w-5 h-5 px-1 flex items-center justify-center text-xs font-bold text-white bg-linear-to-r from-pink-500 to-red-500 rounded-full shadow-md animate-bounce">
                 {cartItems.length > 99 ? "99+" : cartItems.length}
               </span>
             )}
           </button>
 
-          <Link href="/client/login">
-            <button className="bg-pink-500 text-white font-bold px-4 py-1 rounded-2xl cursor-pointer">
-              Login
-            </button>
-          </Link>
+          {isLoggedIn ? (
+            <ProfileDropdown user={user} />
+          ) : (
+            <Link href="/client/login">
+              <button className="bg-pink-500 text-white font-bold px-4 py-1 rounded-2xl cursor-pointer">
+                Login
+              </button>
+            </Link>
+          )}
         </div>
       </header>
 
@@ -67,7 +73,7 @@ const Header = () => {
 
       {/* Cart Popup */}
       <div
-        className={`fixed top-0 right-0 h-screen w-[400px] border-pink-100 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100 z-50 shadow-2xl transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-screen w-100 border-pink-100 bg-linear-to-r from-pink-100 via-yellow-50 to-pink-100 z-50 shadow-2xl transition-transform duration-300 ${
           showCart ? "translate-x-0" : "translate-x-full"
         }`}
       >

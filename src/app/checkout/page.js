@@ -8,18 +8,28 @@ import { useCart } from "../context/CartContext";
 import { useUser } from "../context/UserContext";
 
 export default function CheckoutPage() {
-  const { cartItems, clearCart } = useCart();
+  const { cartItems, cartTotal, clearCart } = useCart();
   const { user, isLoggedIn } = useUser();
 
   const [message, setMessage] = useState("");
 
-  const getPrice = (price) => {
-    return Number(price.toString().replace(/,/g, ""));
+  const parsePrice = (price) => {
+    if (price == null) return 0;
+    const normalized = typeof price === "string" ? String(price).replace(/[^0-9.]/g, "") : String(price);
+    return Number(normalized) || 0;
   };
 
-  const subtotal = cartItems.reduce((acc, item) => {
-    return acc + getPrice(item.price) * item.qty;
+  const getQuantity = (item) => item.qty ?? item.quantity ?? 1;
+
+  const subtotal = cartTotal || cartItems.reduce((acc, item) => {
+    return acc + parsePrice(item.price) * getQuantity(item);
   }, 0);
+
+  const formatNPR = (value) =>
+    new Intl.NumberFormat("en-NP", {
+      style: "currency",
+      currency: "NPR",
+    }).format(value);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -33,11 +43,11 @@ export default function CheckoutPage() {
     if (!user) return;
 
     setFormData({
-      fullName: user.name || "",
+      fullName: user.fullName || user.name || "",
       email: user.email || "",
       address: user.address || "",
       city: user.city || "",
-      zip: user.zip || "",
+      zip: user.zip || user.postalCode || "",
     });
   }, [user]);
 
@@ -120,7 +130,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-50 p-6">
+    <div className="min-h-screen bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50 p-6">
       <h1 className="text-3xl font-bold mb-6">Checkout</h1>
       {/* The login prompt depends on client-only state (localStorage). Render only on client to avoid SSR hydration mismatch. */}
       <ClientOnly>
@@ -240,7 +250,7 @@ export default function CheckoutPage() {
               onClick={handlePlaceOrder}
               className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-full font-semibold transition"
             >
-              Place Order • NPR {subtotal.toLocaleString()}
+              Place Order • {formatNPR(subtotal)}
             </button>
           </form>
         </div>
@@ -271,7 +281,7 @@ export default function CheckoutPage() {
                 </div>
 
                 <p className="font-semibold">
-                  NPR {(getPrice(item.price) * item.qty).toLocaleString()}
+                  NPR {(parsePrice(item.price) * item.qty).toLocaleString()}
                 </p>
               </div>
             ))}

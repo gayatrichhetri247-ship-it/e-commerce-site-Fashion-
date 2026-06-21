@@ -1,26 +1,43 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
-    if (typeof window !== "undefined") {
-      const storedUser = localStorage.getItem("user");
-      return storedUser ? JSON.parse(storedUser) : null;
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
-    return null;
-  });
+  }, []);
+
+  const saveUser = (nextUser) => {
+    setUser(nextUser);
+    localStorage.setItem("user", JSON.stringify(nextUser));
+  };
 
   const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
+    saveUser(userData);
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem("user");
+  };
+
+  const updateUser = (updates) => {
+    setUser((prev) => {
+      const nextUser = {
+        ...prev,
+        ...updates,
+      };
+      localStorage.setItem("user", JSON.stringify(nextUser));
+      return nextUser;
+    });
   };
 
   return (
@@ -29,6 +46,7 @@ export const UserProvider = ({ children }) => {
         user,
         login,
         logout,
+        updateUser,
         isLoggedIn: !!user,
       }}
     >

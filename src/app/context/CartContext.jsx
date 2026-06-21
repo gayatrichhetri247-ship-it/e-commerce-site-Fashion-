@@ -38,6 +38,12 @@ export function CartProvider({ children }) {
     }
   }, [cartItems, mounted]);
 
+  const parsePrice = (price) => {
+    if (price == null) return 0;
+    const normalized = typeof price === "string" ? String(price).replace(/[^0-9.]/g, "") : String(price);
+    return Number(normalized) || 0;
+  };
+
   // Add to cart
   const addToCart = (product) => {
     setCartItems((prev) => {
@@ -104,10 +110,12 @@ export function CartProvider({ children }) {
     0
   );
 
+  const getQuantity = (item) => item.qty ?? item.quantity ?? 1;
+
   // Total amount
   const cartTotal = cartItems.reduce((total, item) => {
-    const price = Number(item.price || 0);
-    return total + price * (item.qty || 1);
+    const price = parsePrice(item.price);
+    return total + price * getQuantity(item);
   }, 0);
 
   return (
