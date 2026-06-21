@@ -1,10 +1,18 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Productcards from "@/components/productcards";
 import ShopAll from "@/components/ProductCategory";
 import ProductCard from "@/components/ProductCrad";
+import { useProducts } from "../context/ProductContext";
 
 const Page = () => {
+  const { products } = useProducts();
+
+  const dressesProducts = products.filter(
+  (item) =>
+    item.category.toLowerCase() === "dresses"
+);
   return (
     <div className="min-h-screen bg-linear-to-r from-pink-100 via-yellow-50 to-pink-50 flex flex-col items-center p-4 sm:p-8">
       

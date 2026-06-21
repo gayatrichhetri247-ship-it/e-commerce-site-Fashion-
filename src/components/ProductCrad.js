@@ -18,15 +18,22 @@ const ProductCard = ({ product }) => {
       setShowPopup(false);
     }, 2000);
   };
+const isValidImage =
+  typeof product.image === "string" &&
+  (product.image.startsWith("/") ||
+    /^https?:\/\/.+\..+/.test(product.image));
+
+const safeImage = isValidImage
+  ? product.image
+  : "https://via.placeholder.com/400x600";
 
   return (
     <div className="w-full overflow-hidden rounded-xl border border-gray-100 bg-white shadow-md shadow-pink-200/40 hover:shadow-lg hover:shadow-pink-200/60 transition-all duration-300 flex flex-col group">
-      
       {/* Product Image Frame Wrapper */}
       <div className="relative aspect-3/4 w-full overflow-hidden bg-gray-50">
         <Image
-          src={product.image}
-          alt={product.title}
+          src={safeImage}
+          alt={product.title || "product"}
           fill
           sizes="(max-w-640px) 100vw, (max-w-1024px) 50vw, 25vw"
           priority={false}
@@ -42,15 +49,22 @@ const ProductCard = ({ product }) => {
         </p>
 
         {/* Product Title */}
-        <h3 className="mt-1 text-sm sm:text-base font-bold text-gray-800 line-clamp-1 tracking-tight" title={product.title}>
+        <h3
+          className="mt-1 text-sm sm:text-base font-bold text-gray-800 line-clamp-1 tracking-tight"
+          title={product.title}
+        >
           {product.title}
         </h3>
 
         {/* Ratings block metadata */}
         <div className="mt-1.5 flex items-center gap-1">
           <Star size={14} fill="#fcea5b" color="#fcea5b" className="shrink-0" />
-          <span className="text-xs sm:text-sm font-bold text-gray-700">{product.rating}</span>
-          <span className="text-xs text-gray-400 font-medium">({product.review})</span>
+          <span className="text-xs sm:text-sm font-bold text-gray-700">
+            {product.rating}
+          </span>
+          <span className="text-xs text-gray-400 font-medium">
+            ({product.review})
+          </span>
         </div>
 
         {/* Pricing Stack */}
